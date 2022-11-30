@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--do ovog trenutka se HTML parsira dok ne dođe do skripta
+    onda učitavanje stane
+traži element s id paragraf i neće ga uspjeti naći jer je učitavanje
+stalo prije nego smo došli do dijela gdje se nalazi taj dio paragrafa
+u samom bodyju, u stablu-->
+
+    <script>
+      document.getElementById("paragraf").innerHTML = "laku noc svima";
+    </script>
+    <!--ako ovdje piše skripta, izrezali smo ju i stavili na kraj
+bodyja, u tom slučaju parsiranje štima bez problema-->
+    <!--ne funkcionira opet-->
+
+    <!--ako stavimo defer onda dopuštamo učitavanje cijele stranice
+    i može se izrvršiti javascript-->
+    <!--s async nema garancije ako stavimo hoće li komp dovoljno
+    brzo uspjet parsirati paragraf do kraja skidanja skripte-->
+    <script async src="./mukaSucitavanjem.js"></script>
+    <!--muka2 se učitava sinkrono i blokirajuće-->
+    <script src="./muka2.js"></script>
+
+    <!--document je taj DOM API-->
+  </head>
+  <body>
+    <p id="paragraf">Dobar dan svima!</p>
+  </body>
+</html>
